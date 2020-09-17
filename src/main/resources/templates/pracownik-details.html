@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detale Pracownika</title>
+</head>
+<body>
+<h1>Detale pracownika o id <span th:text="${pracownikDetails.id}"></span></h1>
+<div th:replace="fragments :: navigator"></div>
+<br/>
+<table>
+    <tr>
+        <td>Id: </td>
+        <td th:text="${pracownikDetails.id}"></td>
+    </tr>
+    <tr>
+        <td>Imię: </td>
+        <td th:text="${pracownikDetails.imie}"></td>
+    </tr>
+    <tr>
+    <td>Nazwisko: </td>
+    <td th:text="${pracownikDetails.nazwisko}"></td>
+    </tr>
+    <tr>
+        <td>Czy pije: </td>
+        <td th:text="${pracownikDetails.czyPije}"></td>
+    </tr>
+    <tr>
+        <td>Wiek: </td>
+        <td th:text="${pracownikDetails.wiek}"></td>
+    </tr>
+</table>
+<br/>
+<a th:href="@{/wyplata/add(pracownik_id=${pracownikDetails.id})}">Dodaj wypłatę pracownikowi</a>
+<table style="border: 1px solid">
+    <thread>
+        <tr>
+            <td>Id</td>
+            <td>Funkcja</td>
+            <td>Wypłata</td>
+            <td>Data dodania</td>
+        </tr>
+    </thread>
+    <tbody>
+    <tr th:each="wyplata : ${pracownikDetails.listaPlac}">
+        <td th:text="${wyplata.id}"></td>
+        <td th:text="${wyplata.funkcja}"></td>
+        <td th:text="${wyplata.wysokoscWyplaty}"></td>
+        <td th:text="${wyplata.dataDodania}"></td>
+        <td><a th:href="@{/wyplata/edit(wyplataId=${wyplata.id})}">Edit</a> </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

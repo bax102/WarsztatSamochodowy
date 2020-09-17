@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragments</title>
+</head>
+<body>
+<div th:fragment="navigator">
+
+    <table>
+        <tr>
+            <td>
+                <a th:href="@{/}">Strona główna</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a th:href="@{/pracownik/add}">Formularz pracownika</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a th:href="@{/pracownik/list}">Lista pracowników - do uzupełnienia </a>
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+
+</body>
+</html>

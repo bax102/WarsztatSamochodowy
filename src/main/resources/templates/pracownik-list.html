@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Pracownikow</title>
+    <style>
+        td {
+            border: 1px solid #000;
+        }
+        table {
+            border: 1px solid #000;
+        }
+
+        th {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<h1>Lista Pracowników</h1>
+<div th:replace="fragments :: navigator"></div>
+</br>
+<table>
+    <thread>
+        <tr>
+            <th>Id</th>
+            <th>Imie</th>
+            <th>Nazwiwsko</th>
+            <th>Czy pije</th>
+            <th>Wiek</th>
+            <th>Wypłata</th>
+            <th>Usuń</th>
+            <th>Edytuj</th>
+        </tr>
+    </thread>
+    <tbody>
+    <tr th:each="pracownik : ${listaPracownikow}">
+        <td th:text="${pracownik.id}"></td>
+        <td th:text="${pracownik.imie}"></td>
+        <td th:text="${pracownik.nazwisko}"></td>
+        <td th:text="${pracownik.czyPije}"></td>
+        <td th:text="${pracownik.wiek}"></td>
+        <td>
+            <a th:href="@{/pracownik/details(pracownikIdentifer=${pracownik.id})}">Wypłaty</a>
+        </td>
+        <td>
+            <a th:href="@{'/pracownik/delete/'+${pracownik.id}}">Delete</a>
+        </td>
+        <td>
+            <a th:href="@{'/pracownik/edit/'+${pracownik.id}}">Edit</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

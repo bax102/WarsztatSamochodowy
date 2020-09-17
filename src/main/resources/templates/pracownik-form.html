@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formularz Pracownika</title>
+</head>
+<body>
+<h1>Formularz pracownika</h1>
+<div th:replace="fragments :: navigator"></div>
+</br>
+<form th:action="@{/pracownik/add}" th:method="post" th:object="${newPracownik}">
+    <input type="hidden" th:field="*{id}">
+    Imie: <input th:field="*{imie}"/>
+    <br/>
+    Nazwisko: <input th:field="*{nazwisko}"/>
+    <br/>
+    Czy Pije: <input th:field="*{czyPije}"/>
+    <br/>
+    Wiek: <input th:field="*{wiek}"/>
+    <br/>
+    <input type="submit">
+
+</form>
+</body>
+</html>

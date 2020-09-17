@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formularz wypłaty</title>
+</head>
+<body>
+
+<h1>Formularz pracownika: <span th:text ="${pracownikId}"></span></h1>
+<div th:replace="fragments :: navigator"></div>
+<br/>
+<form th:action="@{/wyplata/add}" th:method="post" th:object="${newWyplata}">
+    <input type="hidden" name="wyplacone" th:value="${pracownikId}">
+    <input type="hidden" th:field="*{dataDodania}";>
+    <input type="hidden" th:field="*{id}";>
+    Funkcja:
+    <select th:field="*{funkcja}">
+        <option th:each="fun : ${funkcja}"
+                th:value="${fun}"
+                th:text="${fun.getOpis()}">
+        </option>
+    </select>
+    <br/>
+    Wysokość wypłaty: <input type="number" step="0.500" min="1800" th:field="*{wysokoscWyplaty}"/>
+    <br/>
+    <input type = "submit";>
+</form>
+</body>
+</html>
